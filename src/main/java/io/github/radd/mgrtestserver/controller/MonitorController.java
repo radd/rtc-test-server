@@ -39,7 +39,7 @@ public class MonitorController {
         return "ok";
     }
 
-    @Scheduled(fixedDelay = 1000)
+    @Scheduled(fixedDelay = 500)
     public void stats() {
         if(!isRunning)
             return;
@@ -62,8 +62,9 @@ public class MonitorController {
             return "ok";
 
         isRunning=false;
-        File file = new File("C:\\Users\\woles\\Projects\\Node\\mgr-test-client\\test2\\"+ type + "\\monitor\\test_"+ testID + ".log");
-        file.getParentFile().mkdir();
+        //File file = new File("C:\\Users\\woles\\Projects\\Node\\mgr-test-client\\test2\\"+ type + "\\monitor\\test_"+ testID + ".log");
+        File file = new File("C:\\test2\\"+ type + "\\monitor\\test_"+ testID + ".log");
+        file.getParentFile().mkdirs();
         if(!file.exists())
             file.createNewFile();
 

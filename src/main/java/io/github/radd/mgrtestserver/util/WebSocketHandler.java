@@ -20,7 +20,9 @@ public class WebSocketHandler extends TextWebSocketHandler {
 
         TextMessage payload = new TextMessage(message.getPayload());
         for(WebSocketSession webSocketSession : sessions) {
-            webSocketSession.sendMessage(payload);
+            synchronized(webSocketSession) {
+                webSocketSession.sendMessage(payload);
+            }
         }
     }
 
